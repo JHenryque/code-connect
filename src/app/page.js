@@ -1,4 +1,5 @@
 import { CardPost } from "@/components/CardPost";
+import logger from "@/logger";
 
 const post = {
   id: 1,
@@ -18,10 +19,25 @@ const post = {
   },
 };
 
-export default function Home() {
+async function getAllPosts() {
+  const response = await fetch("http://localhost:3042/posts");
+  if (!response.ok) {
+    logger.error("Ops, algo deu errado!");
+    return [];
+  }
+
+  logger.info("Posts carregados com sucesso!");
+
+  return response.json();
+}
+
+export default async function Home() {
+  const posts = await getAllPosts();
   return (
-    <main>
-      <CardPost post={post} />
+    <main className="grid">
+      {posts.map((post) => (
+        <CardPost key={post.id} post={post} />
+      ))}
     </main>
   );
 }

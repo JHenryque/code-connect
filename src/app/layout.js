@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
       <body>
         <div className="app-container">
           <Aside />
-          {children}
+          <div>{children}</div>
         </div>
       </body>
     </html>

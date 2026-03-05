@@ -14,5 +14,16 @@ body {
   margin: 56px auto;
   display: flex;
   gap: 28px;
-  height: 100vh;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex-grow: 1;
+}
+
+.grid {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
