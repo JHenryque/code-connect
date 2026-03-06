@@ -1,0 +1,9 @@
+.links {
+  text-align: center;
+  flex-grow: 1;
+}
+
+.links a {
+  margin: 0 8px;
+  text-align: center;
+}
