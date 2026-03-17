@@ -2,6 +2,7 @@ import { CardPost } from "@/components/CardPost";
 import logger from "@/logger";
 import Link from "next/link";
 import stylle from "./page.module.css";
+import db from "../../prisma/db";
 
 const post = {
   id: 1,
@@ -22,17 +23,24 @@ const post = {
 };
 
 async function getAllPosts(page = 1) {
-  const response = await fetch(
-    `http://localhost:3042/posts?_page=${page}&_per_page=6`,
-  );
-  if (!response.ok) {
-    logger.error("Ops, algo deu errado!");
-    return [];
+  // const response = await fetch(
+  //   `http://localhost:3042/posts?_page=${page}&_per_page=6`,
+  // );
+  // if (!response.ok) {
+  //   logger.error("Ops, algo deu errado!");
+  //   return [];
+  // }
+  // logger.info("Posts carregados com sucesso!");
+  // return response.json();
+
+  try {
+    const posts = await db.post.findMany();
+
+    return { data: posts, prev: null, next: null };
+  } catch (error) {
+    logger.error("Falha ao obter posts", { error });
+    return { data: [], prev: null, next: null };
   }
-
-  logger.info("Posts carregados com sucesso!");
-
-  return response.json();
 }
 
 export default async function Home({ searchParams }) {
