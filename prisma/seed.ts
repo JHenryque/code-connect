@@ -1,14 +1,13 @@
 import "dotenv/config";
 import { Pool } from "pg";
 import { PrismaPg } from "@prisma/adapter-pg";
-import { PrismaClient } from "../prisma/generated/client";
+import { PrismaClient } from "@prisma/client";
 
 const connectionString = `${process.env.DATABASE_URL}`;
 const pool = new Pool({ connectionString });
 const adapter = new PrismaPg(pool);
 const prisma = new PrismaClient({ adapter });
 
-console.log("Running seed...", { prisma });
 async function main() {
   const author = {
     name: "Ana Beatriz",
@@ -150,6 +149,7 @@ async function main() {
     },
   ];
 
+  console.log("Os POSTS: ", posts);
   posts.forEach(async (post) => {
     await prisma.post.upsert({
       where: { slug: post.slug },
@@ -164,10 +164,11 @@ async function main() {
 main()
   .then(async () => {
     await prisma.$disconnect();
+    await pool.end();
   })
   .catch(async (e) => {
     console.error(e);
     await prisma.$disconnect();
-
+    await pool.end();
     process.exit(1);
   });
