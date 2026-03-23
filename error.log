@@ -1,2 +1,5 @@
 {"error":{"clientVersion":"7.5.0","code":"ECONNREFUSED","meta":{"modelName":"Post"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Falha ao obter posts","service":"user-service"}
 {"error":{"clientVersion":"7.5.0","code":"ECONNREFUSED","meta":{"modelName":"Post"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Falha ao obter posts","service":"user-service"}
+{"error":{"clientVersion":"7.5.0","code":"ECONNREFUSED","meta":{"modelName":"Post"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Falha ao obter posts","service":"user-service"}
+{"error":{"clientVersion":"7.5.0","code":"ECONNREFUSED","meta":{"modelName":"Post"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Falha ao obter posts","service":"user-service"}
+{"error":{"clientVersion":"7.5.0","code":"ECONNREFUSED","meta":{"modelName":"Post"},"name":"PrismaClientKnownRequestError"},"level":"error","message":"Falha ao obter posts","service":"user-service"}
