@@ -10,3 +10,12 @@
 .container {
   text-align: center;
 }
+
+.heading {
+  color: #81fe88;
+  text-align: center;
+  font-size: 37px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 120%;
+}
