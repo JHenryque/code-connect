@@ -19,8 +19,7 @@
     "react-dom": "^18",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
-    "winston": "^3.19.0",
-    "type": "module"
+    "winston": "^3.19.0"
   },
   "devDependencies": {
     "@prisma/adapter-pg": "^7.5.0",
@@ -31,5 +30,6 @@
     "prisma": "^7.6.0",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
-  }
+  },
+  "type": "module"
 }
