@@ -7,6 +7,7 @@ export default defineConfig({
   migrations: {
     path: "prisma/migrations",
     seed: "node prisma/seed.js",
+    // The following is an example of how to use a custom seed script with Prisma. You can replace it with your own implementation.
   },
   datasource: {
     url: env("POSTGRES_PRISMA_URL"),
