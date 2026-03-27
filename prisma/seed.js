@@ -1,11 +1,10 @@
 import "dotenv/config";
-import { Pool } from "pg";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "@prisma/client";
 
-const connectionString = `${process.env.DATABASE_URL}`;
-const pool = new Pool({ connectionString });
-const adapter = new PrismaPg(pool);
+const connectionString = `${(process.env.POSTGRES_PRISMA_URL, process.env.PRISMA_DATABASE_URL)}`;
+
+const adapter = new PrismaPg({ connectionString });
 const prisma = new PrismaClient({ adapter });
 
 async function main() {
@@ -16,13 +15,13 @@ async function main() {
       "https://raw.githubusercontent.com/viniciosneves/code-connect-assets/main/authors/anabeatriz_dev.png",
   };
 
-  console.log("Creating author", author);
-
   const ana = await prisma.user.upsert({
     where: { username: author.username },
     update: {},
     create: author,
   });
+
+  console.log("Author created", ana);
 
   const posts = [
     {
@@ -147,7 +146,6 @@ async function main() {
     },
   ];
 
-  console.log("Os POSTS: ", posts);
   posts.forEach(async (post) => {
     await prisma.post.upsert({
       where: { slug: post.slug },
@@ -155,16 +153,15 @@ async function main() {
       create: post,
     });
   });
-}
 
+  console.log("Seed OK");
+}
 main()
   .then(async () => {
     await prisma.$disconnect();
-    //await pool.end();
   })
   .catch(async (e) => {
     console.error(e);
     await prisma.$disconnect();
-    await pool.end();
     process.exit(1);
   });
