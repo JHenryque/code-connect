@@ -50,7 +50,7 @@ async function getPostBySlug(slug) {
       error,
     });
   }
-  redirect("/not-found");
+  redirect("/_not-found.js");
 }
 
 export default async function PagePost({ params }) {

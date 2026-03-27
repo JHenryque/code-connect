@@ -24,8 +24,6 @@ async function main() {
     create: author,
   });
 
-  console.log("Author created", ana);
-
   const posts = [
     {
       cover:
@@ -157,8 +155,6 @@ async function main() {
       create: post,
     });
   });
-
-  console.log("Posts created, seed ok");
 }
 
 main()

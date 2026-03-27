@@ -1,5 +1,6 @@
 import style from "./error.module.css";
 import banner from "../assets/404.png";
+import Link from "next/link";
 
 export default function NotFound() {
   <div className={style.container}>
